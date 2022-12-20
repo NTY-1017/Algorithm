@@ -5,8 +5,9 @@ public class Main {
      * 시간 복잡도가 O(nlogn)인 정렬 알고리즘으로 풀 수 있는 문제
      * 병합 정렬, 힙 정렬 , 내장 정렬 함수 등 가능
      * 병합 정렬(Merge Sort)로 풀이 진행
+     * 시간초과 발생 -> 입력값이 많을 때 new 반복으로 시간초과 발생.
      */
-    private static int[] sorted;
+    private static int[] sorted; // 부분 정렬 담을 배열 -> 전역 변수로 선언해서 새로 생성방지(지역 변수로 new 반복시 시간초과)
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -15,8 +16,6 @@ public class Main {
         int N = Integer.parseInt(br.readLine());    // 입력하는 N개의 수
 
         int[] array = new int[N];   // N개의 수 담을 배열
-
-        sorted = new int[N];
 
         for (int i = 0; i < N; i++) {
             array[i] = Integer.parseInt(br.readLine()); // 배열에 저장
@@ -27,6 +26,9 @@ public class Main {
          * Top-Down(재귀) / Bottom-Up(반복) 중 Bottom-Up 형식 사용 -> 정렬하는데 되도록이면 재귀는 피하는게 좋다고 한다
          * 1 -> 2 -> 4 -> 8 -> ... 1부터 배열을 나누는 길이 두 배씩 증가시킴
          */
+
+        sorted = new int[N];
+
         for (int length = 1; length <= array.length - 1; length += length) {
             // 부분 배열 2개를 순서대로 병합
             for (int left = 0; left <= (array.length - 1) -length; left += (2 * length)) {
@@ -36,6 +38,8 @@ public class Main {
                 merge_sort(array, low, mid, high);
             }
         }
+
+        sorted = null;
 
         for (int i : array) {
             sb.append(i).append("\n");
