@@ -2,6 +2,10 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    /*
+    인접행렬 -> 인접리스트
+    이 문제는 bfs ,dfs 중 bfs가 조금 더 빠른거같음
+     */
     private static int N;
     private static int[] parentNode;
     private static ArrayList<ArrayList<Integer>> list = new ArrayList<>();    // 인접리스트(인접행렬로 진행하면 런타임에러 발생)
@@ -12,7 +16,7 @@ public class Main {
 
         N = Integer.parseInt(br.readLine());
 
-        for(int i = 0; i <= N; i++) {
+        for(int i = 0; i <= N; i++) {   // 인접리스트 생성
             list.add(new ArrayList<>());
         }
 
@@ -25,11 +29,11 @@ public class Main {
             list.get(y).add(x);
         }
 
-        parentNode = new int[N + 1];
+        parentNode = new int[N + 1];    // 각 노드(인덱스) 마다 부모노드 저장
 
-        bfs(1);
+        bfs(1);     // bfs
 
-        for (int j = 2; j <= N; j++) {
+        for (int j = 2; j <= N; j++) {  // 출력
             sb.append(parentNode[j]).append("\n");
         }
 
@@ -38,11 +42,10 @@ public class Main {
     }
 
     private static void bfs(int root) {
-        LinkedList<Integer> queue = new LinkedList<Integer>();
+        LinkedList<Integer> queue = new LinkedList<>();
         queue.offer(root);
         parentNode[root] = root;
-
-        Stack<Integer> stack = new Stack<>();
+        
         while(!queue.isEmpty()) {
             int parent = queue.poll();
             for(int child : list.get(parent)) {
