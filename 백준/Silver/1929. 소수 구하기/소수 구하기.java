@@ -11,15 +11,21 @@ public class Main {
         int M = Integer.parseInt(st.nextToken());
         int N = Integer.parseInt(st.nextToken());
 
-        for (int i = M; i <= N; i++) {
-            if(i < 2) continue;
-            if(i == 2 || i == 3) {
-                sb.append(i).append("\n");
+        boolean[] prime = new boolean[N + 1];
+        prime[0] = prime[1] = true;
+        
+        for (int i = 2; i <= Math.sqrt(N); i++) {
+            if (prime[i]) {
                 continue;
             }
-            for (int j = 2; j <= Math.sqrt(i); j++) {
-                if (i % j == 0) break;
-                if (j == (int)Math.sqrt(i)) sb.append(i).append("\n");
+            for (int j = i * i; j <= N; j += i) {
+                if(!prime[j]) prime[j] = true;
+            }
+        }
+
+        for (int i = M; i <= N; i++) {
+            if (!prime[i]) {
+                sb.append(i).append("\n");
             }
         }
 
