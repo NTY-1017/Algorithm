@@ -9,15 +9,17 @@ public class Main {
         int N = Integer.parseInt(br.readLine());
         Queue<Integer> queue = new LinkedList<>();
        
-        if (N % 2 == 0) {
+        if(N == 1) queue.offer(1);
+        else if (N % 2 == 0) {
             for (int i = 2; i <= N; i+=2) {
                 queue.offer(i);
             }
         }
         else {
-            for (int i = 1; i <= N; i++) {
+            for (int i = 4; i <= N; i+=2) {
                 queue.offer(i);
             }
+            queue.offer(2);
         }
 
         while (queue.size() != 1) {
