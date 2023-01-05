@@ -2,30 +2,43 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringBuilder sb = new StringBuilder();
 
         int N = Integer.parseInt(br.readLine());
 
-        String[] s = new String[N];
+        List<Member> memberList = new ArrayList<>();
 
         for (int i = 0; i < N; i++) {
-            s[i] = br.readLine();
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int age = Integer.parseInt(st.nextToken());
+            String name = st.nextToken();
+            memberList.add(new Member(age, name));
         }
 
-        Arrays.sort(s, (s1, s2) -> {
-            StringTokenizer st1 = new StringTokenizer(s1);
-            StringTokenizer st2 = new StringTokenizer(s2);
-            return Integer.parseInt(st1.nextToken()) - Integer.parseInt(st2.nextToken());
-        });
+        Collections.sort(memberList, (m1, m2) -> m1.getAge() - m2.getAge());
 
-        for (int i = 0; i < N; i++) {
-            bw.write(s[i] + "\n");
+        for (Member m : memberList) {
+            sb.append(m.getAge()).append(" ").append(m.getName()).append("\n");
         }
 
-        bw.flush();
-        bw.close();
+        System.out.println(sb);
         br.close();
+    }
+
+    private static class Member{
+        private int age;
+        private String name;
+        private Member(int age, String name) {
+            this.age = age;
+            this.name = name;
+        }
+        private String getName() {
+            return this.name;
+        }
+        private int getAge(){
+            return this.age;
+        }
     }
 }
