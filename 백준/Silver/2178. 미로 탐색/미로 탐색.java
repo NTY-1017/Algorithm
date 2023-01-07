@@ -32,15 +32,17 @@ public class Main {
         graph[0][0] = 0;
         while(!queue.isEmpty()){
             Point point = queue.poll();
-            if (point.getX() == N - 1 && point.getY() == M - 1) {
+            int x = point.getX();
+            int y = point.getY();
+            if (x == N - 1 && y == M - 1) {
                 step = point.getDepth();
                 break;
             }
             for (int i = 0; i < 4; i++) {
-                if (point.getX() + dx[i] < N && point.getX() + dx[i] >= 0 && point.getY() + dy[i] < M && point.getY() + dy[i] >= 0) {
-                    if (graph[point.getX() + dx[i]][point.getY() + dy[i]] == 1) {
-                        queue.offer(new Point(point.getX() + dx[i], point.getY() + dy[i], point.getDepth() + 1));
-                        graph[point.getX() + dx[i]][point.getY() + dy[i]] = 0;
+                if (x + dx[i] < N && x + dx[i] >= 0 && y + dy[i] < M && y + dy[i] >= 0) {
+                    if (graph[x + dx[i]][y + dy[i]] == 1) {
+                        queue.offer(new Point(x + dx[i], y + dy[i], point.getDepth() + 1));
+                        graph[x + dx[i]][y + dy[i]] = 0;
                     }
                 }
             }
