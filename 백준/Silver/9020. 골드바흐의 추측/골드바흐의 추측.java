@@ -9,11 +9,11 @@ public class Main {
 
         int T = Integer.parseInt(br.readLine());
 
-        setPrime();
+        setPrime();    // 입력범위 내 존재하는 소수 세팅
 
         for (int i = 0; i < T; i++) {
             int input = Integer.parseInt(br.readLine());
-            for (int j = input / 2; j >= 2; j--) {
+            for (int j = input / 2; j >= 2; j--) {    // 중간부터 체크
                 if(!prime[j] && !prime[input - j]) {
                     sb.append(j).append(" ").append(input - j).append("\n");
                     break;
