@@ -4,7 +4,6 @@ import java.util.*;
 public class Main {
     private static int a, b, c; // -1, 0, 1 개수
     private static int[][] paper;
-
     public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
@@ -13,9 +12,7 @@ public class Main {
 
         for (int i = 0; i < N; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
-            for (int j = 0; j < N; j++) {
-                paper[i][j] = Integer.parseInt(st.nextToken());
-            }
+            for (int j = 0; j < N; j++) paper[i][j] = Integer.parseInt(st.nextToken());
         }
 
         cut(0, 0, N);
@@ -27,10 +24,8 @@ public class Main {
     // 분할
     private static void cut(int x, int y, int n) {
         if (!check(x, y, n)) {
-            for(int i = x; i < x + n; i += n / 3){
-                for (int j = y; j < y + n; j += n /3) {
-                    cut(i, j, n / 3);
-                }
+            for(int i = x; i < x + n; i += n / 3) {
+                for (int j = y; j < y + n; j += n /3) cut(i, j, n / 3);
             }
         }
     }
