@@ -26,19 +26,20 @@ public class Main {
     private static void f() {
         int low = 0;
         int high = N - 1;
-        int min = 2000000000;
+        int min = 2000000000;   // 입력 합계 최대값의 절대값
         while (low < high) {
-            if(arr[low] + arr[high] == 0) {
+            int sum = arr[low] + arr[high];
+            if(sum == 0) {
                 x1 = arr[low];
                 x2 = arr[high];
                 break;
             }
-            if(Math.abs(arr[low] + arr[high]) < min) {
+            if(Math.abs(sum) < min) {
                 x1 = arr[low];
                 x2 = arr[high];
                 min = Math.abs(arr[low] + arr[high]);
             }
-            if (arr[low] + arr[high] > 0) high -= 1;
+            if (sum > 0) high -= 1;
             else low += 1;
         }
     }
