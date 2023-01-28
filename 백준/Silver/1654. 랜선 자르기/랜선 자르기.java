@@ -2,6 +2,9 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+      /*
+    랜선길이 최대가 int 범위 넘어가기때문에 long
+     */
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
