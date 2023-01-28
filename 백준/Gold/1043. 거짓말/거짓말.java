@@ -28,14 +28,15 @@ public class Main {
     }
 
     private static void bfs() {
-        boolean[] check = new boolean[M];   // 이야기 할 수 없는 파티 체크(true 이면 할 수 없음)
+        boolean[] checkParty = new boolean[M];   // 이야기 할 수 없는 파티 체크
+        boolean[] checkPerson = new boolean[N + 1]; // 진실 아는사람 체크
         while (!q.isEmpty()) {
             int x = q.poll();
+            checkPerson[x] = true;
             for (int i = 0; i < M; i++) {
-                if(!check[i] && graph[i][x]) {  // 이야기 할수 있는 파티 중 진실을 아는사람 있으면
-                    graph[i][x] = false;    // 중복으로 큐에 담지 않기 안하기 위해 false 처리
-                    check[i] = true;
-                    for (int j = 1; j <= N; j++) if(graph[i][j]) q.offer(j);    // 진실을 아는사람과 같이있던사람 큐에 담기
+                if(!checkParty[i] && graph[i][x]) {  // 이야기 할 수 있는 파티 중 진실 아는사람이 있으면
+                    checkParty[i] = true;
+                    for (int j = 1; j <= N; j++) if(!checkPerson[j] && graph[i][j]) q.offer(j);    // 진실 아는사람과 같이있던사람 큐에 담기
                     max--;
                 }
             }
