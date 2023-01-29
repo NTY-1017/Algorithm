@@ -39,7 +39,7 @@ public class Main {
                     }
                 }
             }
-            if(block >= 0 && count <= time) {
+            if(block >= 0 && count <= time) {    // 시간 같을때 높이 더 높은걸로
                 height = min;
                 time = count;
             }
