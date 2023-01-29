@@ -24,7 +24,7 @@ public class Main {
         }
 
         int height = 0;
-        int time = 500 * 500 * 256 * 2;
+        int time = 500 * 500 * 256 * 2; // 높이 최대로 쌓았을 때 걸린 시간
         while(min <= max){
             int count = 0;
             int block = B;
