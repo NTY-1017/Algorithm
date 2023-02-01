@@ -2,6 +2,10 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
+    /*
+    타겟 채널을 한자리씩 비교하면서 근접한 수를 찾는 방법은 예외생기고 복잡.. -> 코드가 길어짐
+    0번부터 번호누를 수 있는 채널을 비교 대상(100번에서 +-)과 최소 경우 찾는 경우로 해결
+     */
     private static boolean[] remote = new boolean[10];
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -13,33 +17,26 @@ public class Main {
             for (int i = 0; i < M; i++) remote[Integer.parseInt(st.nextToken())] = false;
         }
 
-        int min = Math.abs(N - 100);
-        for (int i = 0; i < 999999; i++) {
-            int ch = i;
-            if(check(ch)) {
-                min = Math.min(Math.abs(ch - N) + String.valueOf(ch).length(), min);
-                if(ch == N) break;
+        int min = Math.abs(N - 100);    // 100번에서 +- 이용해서 채널이동
+        for (int i = 0; i < 999999; i++) {  // 0번 부터 999999(100번에서 이동하는 최악의 경우 근접 값)
+            if(check(i)) {  // 번호 누를 수 있는 지 체크
+                min = Math.min(Math.abs(i - N) + String.valueOf(i).length(), min);
+                if(i == N) break;   // 만약 타겟 채널과 같으면 루프 종료 -> 누르는 경우 최소
             }
-
         }
 
         System.out.println(min);
     }
 
     private static boolean check(int ch) {
-        boolean result = true;
-
         if(ch == 0) {
-            if(!remote[ch]) result = false;
+            if(!remote[ch]) return false;
         } else {
             while (ch > 0) {
-                if(!remote[ch % 10]) {
-                    result = false;
-                    break;
-                } else ch /= 10;
+                if(!remote[ch % 10]) return false;  // 1의 자리 수부터 번호 누를 수 있는지 체크
+                else ch /= 10;
             }
         }
-
-        return result;
+        return true;
     }
 }
