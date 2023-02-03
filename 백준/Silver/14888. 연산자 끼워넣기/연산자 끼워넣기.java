@@ -26,8 +26,8 @@ public class Main {
 
     private static void calculate(int n, int d) {
         if(d == arr.length) {
-            min = n < min ? n : min;
-            max = n > max ? n : max;
+            min = Math.min(n, min);
+            max = Math.max(n, max);
             return;
         }
         for (int i = 0; i < 4; i++) {
@@ -36,7 +36,7 @@ public class Main {
                 if(i == 0) calculate(n + arr[d], d + 1);
                 else if(i == 1) calculate(n - arr[d], d + 1);
                 else if(i == 2) calculate(n * arr[d], d + 1);
-                else if(i == 3) calculate(n / arr[d], d + 1);
+                else calculate(n / arr[d], d + 1);
                 op[i]++;    // 백트래킹
             }
         }
