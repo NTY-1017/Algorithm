@@ -4,7 +4,7 @@ class Solution {
         int answer = 0;
         boolean[][] row = new boolean[11][10];
         boolean[][] column = new boolean[11][10];
-        int x = 5; int y =5;
+        int x = 5; int y = 5;
         for(int i = 0; i < dirs.length(); i++) {
             switch(dirs.charAt(i)) {
                 case 'U': 
