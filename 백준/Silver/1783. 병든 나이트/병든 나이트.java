@@ -11,12 +11,9 @@ public class Main {
         int M = Integer.parseInt(st.nextToken());
 
         int max = 1;
-
-        if(N == 1) max = 1;
+        if(N == 1) ;
         else if(N == 2) {
-            if(M < 3) ;
-            else if(M < 5) max = 2;
-            else if(M < 7) max = 3;
+            if(M < 7) max = (M + 1) / 2;
             else max = 4;
         } else {
              if(M < 5) max = M;
