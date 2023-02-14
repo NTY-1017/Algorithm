@@ -6,14 +6,12 @@ public class Main {
 
         int N = Integer.parseInt(br.readLine());
 
-        int two = 0;
         int five = 0;
         for (int i = 1; i <= N; i++) {
-            if (i % 2 == 0) two += countX(i, 2);
             if (i % 5 == 0) five += countX(i, 5);
         }
 
-        System.out.println(two >= five ? five : two);
+        System.out.println(five);
     }
 
     private static int countX(int i, int x) {
