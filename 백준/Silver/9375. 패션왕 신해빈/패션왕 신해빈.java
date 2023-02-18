@@ -13,14 +13,11 @@ public class Main {
                 StringTokenizer st = new StringTokenizer(br.readLine());
                 st.nextToken();
                 String kind = st.nextToken();
-                if (hm.containsKey(kind)) {
-                    hm.put(kind, hm.get(kind) + 1);
-                }
-                else hm.put(kind, 1);
+                hm.put(kind, hm.getOrDefault(kind,1) + 1);  // 없는 경우의 수 +1
             }
             int count = 1;
-            for (int n : hm.values()) count *= (n + 1);
-            sb.append(count - 1).append('\n');
+            for (int n : hm.values()) count *= n;
+            sb.append(count - 1).append('\n');  // 아무것도 안 선택할 경우 -1
         }
         System.out.print(sb);
     }
