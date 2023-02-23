@@ -3,8 +3,9 @@ class Solution {
     public int solution(int sticker[]) {
         int answer = 0;
         int len = sticker.length;
-        if(len == 1) return sticker[0];
         
+        if(len == 1) return sticker[0];
+    
         int[] dp = new int[len];
         
         dp[0] = dp[1]= sticker[0];
