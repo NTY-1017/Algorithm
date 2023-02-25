@@ -13,7 +13,6 @@ public class Main {
                 StringTokenizer st = new StringTokenizer(br.readLine());
                 for (int j = 0; j < N; j++) arr[i][j] = Integer.parseInt(st.nextToken());
             }
-
             int[][] dp = new int[2][N];
             dp[0][0] = arr[0][0];
             dp[1][0] = arr[1][0];
