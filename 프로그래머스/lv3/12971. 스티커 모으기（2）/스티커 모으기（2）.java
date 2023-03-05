@@ -3,7 +3,6 @@ class Solution {
     public int solution(int sticker[]) {
         int answer = 0;
         int len = sticker.length;
-        
         if(len == 1) return sticker[0];
     
         int[] dp = new int[len];
