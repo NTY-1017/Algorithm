@@ -6,7 +6,7 @@ class Solution {
             if(stations[i] - w > idx) answer += 1 + (stations[i] - w - idx - 1) / (2 * w + 1) ;
             idx = stations[i] + w + 1; 
         }
-        if(idx <= n) answer += 1 + (n - idx) / (2 * w + 1) ;
+        if(idx <= n) answer += 1 + (n - idx) / (2 * w + 1);
         return answer;
     }
 }
