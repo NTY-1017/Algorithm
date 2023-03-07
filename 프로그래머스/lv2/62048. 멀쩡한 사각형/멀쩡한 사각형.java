@@ -1,19 +1,15 @@
 class Solution {
     public long solution(int w, int h) {
-        long answer = 1;
-        long big, small;
+        long big, small, n;
         
         if(w > h) {
             big = w; small = h; 
         } else {
             big = h; small = w; 
         }
+        n = gcd(big, small);
         
-        long n = gcd(big, small);
-        
-        answer = (big * small) - (big + small - n);
-        
-        return answer;
+        return (big * small) - (big + small - n);
     }
     
     private long gcd(long a, long b) {
