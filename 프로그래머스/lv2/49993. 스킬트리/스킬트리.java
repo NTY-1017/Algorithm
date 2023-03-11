@@ -3,6 +3,7 @@ class Solution {
         int answer = 0;
         for(int i = 0; i < skill_trees.length; i++) {
             int idx = -1;
+            
             loop:
             for(int j = 0; j < skill_trees[i].length(); j++) {
                 for(int k = 0; k < skill.length(); k++) {
